@@ -1,0 +1,59 @@
+{% extends 'front/base.html' %}
+{% load static %}
+{% block konten %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'cart.css'%}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="row" >
+    <div class="col-lg-12">
+        <div class="box-element" style="padding: 5px 10px 20px 60px">
+            <a class="btn btn-outline-dark"  href="{% url 'buah'%}"> &#x2190; Continue Shopping</a>
+            <br><br>
+            <table class="table">
+                <tr>
+                    <th><h5>Items: <strong>3</strong></h5></th>
+                    <th><h5>Total: <strong>Rp</strong></h5></th>
+                    <th>
+                        <a style="float: right; margin: 5px;"  class="btn btn-success" href="{% url 'checkout'%}">Checkout Disini</a>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        
+        <br>
+
+        <div class="box-element">
+            <div class="cart-row">
+                <div style="flex: 2; padding: 5px 10px 20px 60px"><strong>produk</strong></div>
+                <div style="flex: 1;"><strong>Kategori</strong></div>
+                <div style="flex: 1;"><strong>jumlah</strong></div>
+                <div style="flex: 1;"><strong>harga</strong></div>
+            </div>
+            {% for item in items %} 
+            <div class="cart-row">
+                <div style="flex: 2;"><img class="row-image" src="{{item.p.image}}" alt=""></div>
+                <div style="flex: 2;">{{item.p.nama}}</div>
+                <div style="flex: 1;">{{item.p.harga|floatformat:2}}</div>
+                <div style="flex: 1;">
+                    <p class="quantity">{{p.jumlah}}</p>
+                    <div class="quantity">
+                        <img class="chg-quantity" src="{% static  'arrowup.png' %}">
+                
+                        <img class="chg-quantity" src="{% static  'arrowbot.png' %}">
+                    </div>
+                </div>
+                <div style="flex: 1;">{{p.harga}}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock konten %}

@@ -1,0 +1,53 @@
+{% extends "back/base.html" %}
+{% load static %}
+{% block konten %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="toolbar">
+                            <!--Here you can write extra buttons/actions for the toolbar-->
+                        </div>
+                        <div class="header">
+                            <a class ="btn btn-success" href="{% url 'tabel_tambah' %}"> + Tambah Buah</a>   
+                        </div>
+                        <table id="bootstrap-table" class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col-12">Nama</th>
+                                    <th scope="col-12">Kategori</th>
+                                    <th scope="col-12">Jumlah</th>
+                                    <th scope="col-12">Harga</th>
+                                    <th data-field="actions" class="td-actions text-right"  data-events="operateEvents" data-formatter="operateFormatter">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in buahh  %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ p.namabuah }}</td>
+                                    <td>{{ p.kategori }}</td>
+                                    <td>{{ p.jumlah }}</td>
+                                    <td>{{ p.harga }}</td>
+                                    
+                                    <td><a class="btn btn-warning btn-sm" href ="{% url 'buah_update' p.id %}" ><i class="fa-solid fa-check"></i></a> <a onclick="alert(' Yakin mau di hapus ?')"class="btn btn-danger btn-sm" href ="{% url 'buah_delete' p.id %}" ><i class="fa-solid fa-x"></i></a>
+                        
+                                    </td>
+                
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!--  end card  -->
+            </div> <!-- end col-md-12 -->
+        </div> <!-- end row -->
+    </div>
+</div>
+{% endblock konten %}
+
+{% block js %}
+  
+{% endblock js %}

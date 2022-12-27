@@ -1,0 +1,29 @@
+{% extends "front/base.html" %} 
+{% block konten %}
+<br><br>&ensp;
+<h4>&ensp;&ensp; Daftar Produk Buah</h4>
+
+&ensp;<hr>
+<br><br>
+<div class="row">
+  {% for p in produk  %}
+  <div class="col-lg-3" style="padding: 5px 10px 20px 60px">
+    <img src="{{p.image}}" class="card-img-top" height="70%">
+    <h1 style="display:inline-block;float:left">{{p.kategori}}</h1>
+    <br><br><br>
+    <div class="box-element produk">
+      <br>
+      <h6 style="display:inline-block;float:right">{{p.jumlah}}</h6>
+      <h6><strong>{{p.nama}}</strong></h6>
+      <hr>
+      <button class="btn btn-outline-secondary add-btn" data-action="add"> + add to cart</button>
+      <h4 style="display:inline-block;float:right">Rp. {{p.harga}}</h4><br>
+      <br>
+      <br><br>
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+<hr>
+{% endblock konten %}
